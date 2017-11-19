@@ -1,0 +1,53 @@
+#!/bin/bash
+# 
+# Written for alphaOS: http://sourceforge.net/projects/alphaos
+# Author: archpup@gmail.com
+#
+# Distributed under the Creative Commons Attribution ShareAlike 3.0 Unported License. 
+# http://creativecommons.org/licenses/by-sa/3.0/
+
+TINT2DIR="$HOME/.config/tint2"
+
+tint2_bottom() {
+  ln -sf $TINT2DIR/tint2rc_default $TINT2DIR/tint2rc
+}
+
+tint2_gaia10() {
+  ln -sf $TINT2DIR/tint2rc_gaia10_mod $TINT2DIR/tint2rc
+}
+
+tint2_left() {
+  ln -sf $TINT2DIR/tint2rc_default_left $TINT2DIR/tint2rc
+}
+
+tint2_crunchbang() {
+  ln -sf $TINT2DIR/tint2rc_crunchbang $TINT2DIR/tint2rc
+}
+
+tint2_right() {
+  ln -sf $TINT2DIR/tint2rc_right $TINT2DIR/tint2rc
+}
+
+case "$1" in
+
+  bottom)
+    tint2_bottom
+    tint2restart ;;
+
+  gaia10)
+    tint2_gaia10
+    tint2restart ;;
+
+  left)
+    tint2_left
+    tint2restart ;;
+  
+  crunchbang)
+    tint2_crunchbang
+    tint2restart ;;
+
+  right)
+    tint2_right
+    tint2restart ;;
+    
+esac

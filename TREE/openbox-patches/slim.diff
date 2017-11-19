@@ -1,0 +1,38 @@
+--- a/etc/slim.conf	2016-02-29 20:58:55.000000000 +0000
++++ b/etc/slim.conf	2016-02-29 21:18:57.104111040 +0000
+@@ -35,7 +35,7 @@
+ # to adjust the command according to your preferred shell,
+ # i.e. for freebsd use:
+ # login_cmd           exec /bin/sh - ~/.xinitrc %session
+-login_cmd           exec /bin/bash -login ~/.xinitrc %session
++login_cmd           exec /bin/bash -login /etc/X11/xinit/xinitrc %session
+ 
+ # Commands executed when starting and exiting a session.
+ # They can be used for registering a X11 session with
+@@ -59,7 +59,7 @@
+ screenshot_cmd      import -window root /slim.png
+ 
+ # welcome message. Available variables: %host, %domain
+-welcome_msg         Welcome to %host
++welcome_msg         Welcome to Porteus
+ 
+ # Session message. Prepended to the session name when pressing F1
+ # session_msg         Session: 
+@@ -70,7 +70,7 @@
+ 
+ # default user, leave blank or remove this line
+ # for avoid pre-loading the username.
+-#default_user        simone
++default_user        guest
+ 
+ # Focus the password field on start when default_user is set
+ # Set to "yes" to enable this feature
+@@ -78,7 +78,7 @@
+ 
+ # Automatically login the default user (without entering
+ # the password. Set to "yes" to enable this feature
+-#auto_login          no
++auto_login          yes
+ 
+ 
+ # current theme, use comma separated list to specify a set to 

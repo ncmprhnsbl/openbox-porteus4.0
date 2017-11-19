@@ -1,0 +1,39 @@
+#!/bin/bash
+cat <<EOFMENU
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_pipe_menu>
+	     <separator label="Porteus 4.0" />
+	     <separator label="`date +%A\ \ %I\:%M\ %p`" />
+	     <separator label="`date +%B\ %d,\ %Y`" />
+	     <separator />
+             <item label="File Manager"> <action name="Execute">
+             <execute>/opt/porteus-scripts/xorg/fmanager</execute> 
+             <startupnotify><enabled>yes</enabled></startupnotify>
+             </action></item>
+             <item label="Terminal"> <action name="Execute">
+             <execute>/opt/porteus-scripts/xorg/terminal</execute> 
+             <startupnotify><enabled>yes</enabled></startupnotify>
+             </action></item>
+             <item label="Web Browser"> <action name="Execute">
+             <execute>/opt/porteus-scripts/xorg/browser</execute> 
+             <startupnotify><enabled>yes</enabled></startupnotify>
+             </action></item>
+	     <separator />
+	     <menu id="desktop-accessories-menu" label="Accessories" execute="/opt/porteus-scripts/extra/dyn_menu Accessories" /> 
+	     <menu id="desktop-graphics-menu" label="Graphics" execute="/opt/porteus-scripts/extra/dyn_menu Graphics" /> 
+	     <menu id="desktop-internet-menu" label="Internet" execute="/opt/porteus-scripts/extra/dyn_menu Internet" /> 
+	     <menu id="desktop-office-menu" label="Office" execute="/opt/porteus-scripts/extra/dyn_menu Office" /> 
+	     <menu id="desktop-multimedia-menu" label="Sound &amp; Video" execute="/opt/porteus-scripts/extra/dyn_menu Multimedia" /> 
+	     <menu id="desktop-system-menu" label="System Tools" execute="/opt/porteus-scripts/extra/dyn_menu System" /> 
+	     <menu id="desktop-desktopsettings-menu" label="Preferences" execute="/opt/porteus-scripts/extra/dyn_menu DesktopSettings" /> 
+	     <menu id="desktop-games-menu" label="Games" execute="/opt/porteus-scripts/extra/dyn_menu Games" /> 
+	     <menu id="desktop-other-menu" label="Other" execute="/opt/porteus-scripts/extra/dyn_menu Other" />
+ 	     <separator />
+	     <menu id="system-menu" />
+	     <separator />
+	     <item label="Exit"> <action name="Execute"> 
+	     <execute>/opt/porteus-scripts/extra/logoutscript</execute>
+	     </action></item>
+
+</openbox_pipe_menu>
+EOFMENU

@@ -1,0 +1,68 @@
+#!/bin/bash
+#candypipe
+cat <<EOFMENU
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_pipe_menu>
+		        <separator/>
+			<menu id="conky" label="Conky">
+                          <item label="Stop Conky"> <action name="Execute">
+                          <execute>killall conky</execute>
+                          </action></item>
+                          <item label="Standard"> <action name="Execute">
+                          <execute>conkytheme default</execute>
+                          </action></item>
+                          <item label="Gotham"> <action name="Execute">
+                          <execute>conkytheme gotham</execute>
+                          </action></item>
+                          <item label="Minimal"> <action name="Execute">
+                          <execute>conkytheme min</execute>
+                          </action></item>
+                          <item label="Max"> <action name="Execute">
+                          <execute>conkytheme max</execute>
+                          </action></item>
+                          <item label="Edit conky.conf"> <action name="Execute">
+                          <execute>beaver ~/.config/conky/conky.conf</execute>
+                          </action></item>
+		        </menu>
+		        <separator/>
+			<menu id="tint2" label="Tint2 Themes">
+                          <item label="Crunchbang"> <action name="Execute">
+                          <execute>tint2theme crunchbang</execute>
+                          </action></item>
+                          <item label="Gaia 10 Mod"> <action name="Execute">
+                          <execute>tint2theme gaia10</execute>
+                          </action></item>
+                          <item label="Left sidebar"> <action name="Execute">
+                          <execute>tint2theme left</execute>
+                          </action></item>
+                          <item label="Right sidebar"> <action name="Execute">
+                          <execute>tint2theme right</execute>
+                          </action></item>
+                          <item label="Edit tint2rc"> <action name="Execute">
+                          <execute>beaver ~/.config/tint2/tint2rc</execute>
+                          </action></item>
+		        </menu>
+		        <separator/>
+			<menu id="compton" label="Trnsprncy, Fadng &amp; Shdws">
+                          <item label="Stop Compton"> <action name="Execute">
+                          <execute>killall compton</execute>
+                          </action></item>
+                          <item label="Start Compton"> <action name="Execute">
+                          <execute>compton --config ~/.config/compton/compton.conf</execute>
+                          </action></item>
+                          <item label="Edit compton.conf"> <action name="Execute">
+                          <execute>beaver ~/.config/compton/compton.conf</execute>
+                          </action></item>
+                          <item label="Select &amp; Set Window Opacity 70%"> <action name="Execute">
+                          <execute>compton-trans -s -o 70</execute>
+                          </action></item>
+                          <item label="Select &amp; Set Window Opacity 100%"> <action name="Execute">
+                          <execute>compton-trans -s -o 100</execute>
+                          </action></item>
+		        </menu>
+		        <separator/>
+                        <item label="Choose Wallpaper"> <action name="Execute">                         
+                            <execute>nitrogen</execute>
+                            </action></item>
+</openbox_pipe_menu>
+EOFMENU

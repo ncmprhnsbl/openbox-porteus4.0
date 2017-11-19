@@ -1,0 +1,47 @@
+#!/bin/sh
+
+# /opt/porteus-scripts/bluetooth 
+
+# script for handling bluetooth to used with gtkdialog script
+#variables start(temporary) stop  enable(permanent) disable
+# to be adjusted for desktops without blueman(kde &?)
+. /usr/lib/librokenman
+
+# functions
+ 
+start() { 
+#/usr/bin/blueman-applet
+}
+
+stop() {
+#killall /usr/bin/blueman-applet 
+}
+
+enable() {
+#cp -a --parents /usr/share/applications/blueman-applet.desktop /etc/xdg/autostart
+#cp -a --parents /etc/xdg/autostart/blueman-applet.desktop $PSC_SETTINGS
+}
+
+disable() {
+#rm -rf /etc/xdg/autostart/blueman-applet.desktop /etc/xdg/autostart
+#rm -rf /etc/xdg/autostart/blueman-applet.desktop $PSC_SETTINGS 
+}
+case "${1}" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  enable)
+    enable
+    ;;
+  disable)
+    disable
+    ;;
+  *)
+    echo "Usage: ${0} {start|stop|enable|disable}"
+    exit 1
+    ;;
+esac
+

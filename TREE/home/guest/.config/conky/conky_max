@@ -1,0 +1,78 @@
+conky.config = {
+    background = true,
+    use_xft = true,
+    font = 'monospace:size=9',
+    xftalpha = 1,
+    update_interval = 1.0,
+    total_run_times = 0,
+    own_window = true,
+    own_window_transparent = true,
+    own_window_type = 'desktop',
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    own_window_colour = 'black',
+    double_buffer = true,
+    maximum_width = 240,
+    draw_shades = true,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = true,
+    default_color = '555555',
+    default_shade_color = '000000',
+    default_outline_color = 'gray',
+    alignment = 'top_right',
+    use_spacer = 'right',
+    gap_x = 39,
+    gap_y = 3,
+    no_buffers = true,
+    uppercase = false,
+    cpu_avg_samples = 2,
+    override_utf8_locale = false,
+    color1 = 'FFFFFF',
+    color2 = '999999',
+}
+
+conky.text = [[
+${color1}${font sans-serif:bold:size=12}${time %l:%M:%S} ${font sans:normal:size=8}${time %p}${image ~/.config/conky/porteus-logo-small-g.png -p 5,60 -s 32x32}${alignr}${font sans-serif:normal:size=8}${color2}desk ${font sans-serif:bold:size=12}${color1}$desktop 
+${font sans-serif:normal:size=8}${alignr}${time %a}, ${time %e %B}
+${color2}${font sans-serif:bold:size=8}SYSTEM ${color}${hr 2}
+
+
+${color2}${font sans-serif:normal:size=8}         $kernel $sysname $alignr ${color}$machine
+Host:$alignr$nodename 
+Uptime:$alignr$uptime
+${color2}${font sans-serif:bold:size=8}CPU:      ${color}${cpugraph 20,80 222222 004D00} ${alignr}${color2}$cpu%
+${alignr}${cpu cpu1}%
+${alignr}${cpu cpu2}%
+${font sans-serif:bold:size=8}${color2}FREQ:   ${font sans-serif:normal:size=8}$alignr$freq_g GHz 
+${font sans-serif:bold:size=8}RAM:      ${color}${memgraph 20,80 222222 004D00}${alignr}${color2}$memperc%  
+${font sans-serif:normal:size=8}$alignr$memmax/${color2}$mem
+${color2}${font sans-serif:bold:size=8}TEMP:${font sans-serif:normal:size=8} $alignr${acpitemp}c
+
+
+${color2}${font sans-serif:bold:size=8}TOP PROCESSES ${color}${hr 2}
+
+${font sans-serif:normal:size=8}${top_mem name 1}${alignr}${top mem 1} %
+${top_mem name 2}${alignr}${top mem 2} %
+$font${top_mem name 3}${alignr}${top mem 3} %
+$font${top_mem name 4}${alignr}${top mem 4} %
+
+${color2}${font sans-serif:bold:size=8}NETWORK ${color}${hr 2}
+
+${color}Up: ${color}${alignr}${font sans-serif:normal:size=8}${upspeed eth0}/s
+${alignr}${upspeedgraph eth0 15,160 222222 152958}
+${font sans-serif:bold:size=8}${color}Down: ${color }${alignr}${font sans-serif:normal:size=8}${downspeed eth0}/s
+${alignr}${downspeedgraph eth0 15,160 222222 581516}
+${font sans-serif:bold:size=8}Total: ${font sans-serif:normal:size=8}${alignr}Upload:${color 999999} ${totalup eth0}
+${color}${alignr}Download: ${color 999999}${font sans-serif:normal:size=8}${totaldown eth0}
+    
+
+${font sans-serif:bold:size=8}${color2}SHORTCUT KEYS ${hr 2} ${color}{font sans-serif:normal:size=8}
+Super+t$alignr Terminal
+Super+f$alignr File Manager
+Super+e$alignr Text Editor
+Super+w$alignr Web Browser
+Super+m$alignr Music Player
+#Lxde with tint2 conky & rightclick menu 
+${color}${hr 1}
+conky${alignr}$conky_version
+]]

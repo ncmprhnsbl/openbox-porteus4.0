@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=pmodule.sh
+Icon=cdr
+Name=Porteus Modules
+Type=Application
+Categories=Application;System

@@ -1,0 +1,55 @@
+<!-- This menu is only used to source menu ids - current root menu set in rc.xml is- /opt/porteus-scripts/extra/pipemenus/menu4 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu>
+        <menu id="pipe-places" label="Home.." execute="/opt/porteus-scripts/extra/pipemenus/obpipemenu-places" />
+        <menu id="obrecent.sh" label="Recent Files.." execute="/opt/porteus-scripts/extra/pipemenus/obrecent.sh" />
+        <menu id="date-menu" label="Calendar" execute="/opt/porteus-scripts/extra/pipemenus/date-menu.sh" />
+        <menu id="pipe-wall" label="Wallpapers" execute="/opt/porteus-scripts/extra/pipemenus/obpipemenu-wallpaper" />
+        <menu id="desktop-app-menu" label="Applications" execute="openbox-menu -i lxde-applications.menu" />
+        <menu id="menu3" label="Apps" execute="/opt/porteus-scripts/extra/menu3" />
+        <menu id="menu4" label="Apps" execute="/opt/porteus-scripts/extra/pipemenus/menu4" />
+        <menu id="candypipe" label="Eye Candy" execute="/opt/porteus-scripts/extra/pipemenus/candypipe" />
+        <menu id="openbox" label="0pen3ox" execute="/opt/porteus-scripts/extra/pipemenus/openbox" />
+        <menu id="sysinfo-menu" label="SysInfo" execute="/opt/porteus-scripts/extra/pipemenus/sysinfo.sh" />
+        <menu id="audcon" label="Music Player" execute="/opt/porteus-scripts/extra/pipemenus/audcontrol.sh" />
+         <menu id="dbcon" label="Music Player" execute="/opt/porteus-scripts/extra/pipemenus/dbcontrol.sh" />
+        <menu id="bookmarks" label="Bookmarks" execute="/opt/porteus-scripts/extra/pipemenus/bookmarks.sh" />
+        <menu id="modules" label="Modules" execute="/opt/porteus-scripts/extra/pipemenus/modpipe" />        
+	<menu id="root-menu" label="OpenBox 3">
+                <separator label="Porteus 3.1" />
+                <separator />
+                <separator />
+                <item label="File Manager"> <action name="Execute">
+                     <execute>/opt/porteus-scripts/xorg/fmanager</execute> 
+                     <startupnotify><enabled>yes</enabled></startupnotify>
+                     </action></item>
+                <item label="Terminal"> <action name="Execute">
+                     <execute>/opt/porteus-scripts/xorg/terminal</execute> 
+                     <startupnotify><enabled>yes</enabled></startupnotify>
+                     </action></item>
+                <item label="Web Browser"> <action name="Execute">
+                     <execute>/opt/porteus-scripts/xorg/browser</execute> 
+                     <startupnotify><enabled>yes</enabled></startupnotify>
+                     </action></item>
+                <separator />
+                <menu id="audcon" />
+                <separator />
+		<menu  id="pipe-places" />
+		<separator />
+                <menu id="bookmarks" />
+		<separator />
+                <menu id="desktop-app-menu" />  
+		<separator/>
+		<menu id="openbox" />
+                <separator />
+		<menu id="candypipe" />
+                <separator />
+	        <item label="Run"> <action name="Execute"> 
+                <execute>dmenu_run</execute>
+		</action></item>
+                <separator />
+	        <item label="Exit"> <action name="Execute">
+		<execute>/opt/porteus-scripts/extra/logoutscript</execute>
+		</action></item>
+	 </menu>
+</openbox_menu>

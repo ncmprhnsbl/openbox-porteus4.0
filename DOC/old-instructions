@@ -1,0 +1,74 @@
+###Instructions for Module Creation###
+!!work in progress--- use at own risk!!
+
+Inside this directory are your packages and your TREE.  The files from the tree get overlaid on the packages after they are installed, so you can put all your customizations in there without having to repackage everything.  There are also some cleanup scripts inside the tree, which are run after being copied inside the module's fakeroot.  They make some additional tweaks and remove unneccessary files; I've commented most of the cleanup script out so because it's not necessary and it would break a few things in openbox (for example, header files and locales are normally stripped and sent to devel or locales modules, but since openbox isn't an official module, they won't be included there so we need to keep them in the openbox module.
+
+
+The steps to create a module are actually pretty easy once you get the hang of it.  here we go:
+
+create a fakeroot in /tmp to hold everything:
+
+mkdir /tmp/obox
+
+go into the packages folder for your arch; extract all of the modules there into the fakeroot and install all of the txz/tgz modules there
+
+cd /path/to/PKG64
+for a in `ls|grep xzm`; do xzm2dir $a /tmp/obox; done
+installpkg --root /tmp/obox *.t[g,x]z
+
+
+Now, copy everything from your TREE into the fakeroot:
+
+cd ../TREE/
+cp -ar * /tmp/obox
+
+All your files are in the fakeroot now, so we'll go there and run our cleanup scripts:
+
+cd /tmp/obox
+./003-recreate_links_set_permissions
+./003-launch_before_go
+
+remove those cleanup scripts, we don't want them hanging out in /
+
+rm 003-*
+
+go into /tmp and build your module
+
+cd ../
+dir2xzm obox openbox-sa-x86_64.xzm
+
+
+DONE!
+
+put it in place:
+
+cp openbox_addon-x86_64.xzm /mnt/sdb*/3.1-64/porteus/modules
+
+## Caches
+When testing you MUST boot into text mode (append 3 to the boot line) and run /usr/bin/p_cache as root which is a cache script
+in order to generate the required caches. If not the desktop won't boot. It generates a module in
+/tmp/009-caches.xzm. MAKE SURE you merge this caches module with the final 003-openbox.xzm module before
+the final product.  
+
+## Procedure for testing desktop
+1) Boot into text mode
+2) Log in as root
+3) run p_cache
+4) exit to guest
+5) ??>[openbox-session --with-ck-launch 2>/tmp/out]<??not right
+or root/lxdm? + some log?
+
+This allows all runtime errors to be logged to /tmp/out. You can check it for any serious errors.
+There is a useful script in /opt/porteus-scripts/changes-time. Open it and remove $changes/home and $changes/root.
+When you add something to the panel (for example) you can then run this script, choose a time frame, and it will copy
+all the files modified in this time to /root/changesxxxx.
+
+Reboot and enjoy :)
+
+You can add additional packages into the /packages directory, as well as create a packages/32 directory to build for 32-bit systems; additional scripts and customziations can go inside the tree, then you rebuild with the same process.  Minor tweaks can be done by extracting the module, making changes, and recompressing, just make sure you make those changes in your TREE too or else you'll forget about them.
+
+
+
+
+
+

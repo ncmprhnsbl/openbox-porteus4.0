@@ -1,0 +1,45 @@
+#!/bin/bash
+# 
+# Written for alphaOS: http://sourceforge.net/projects/alphaos
+# Author: archpup@gmail.com
+#
+# Distributed under the Creative Commons Attribution ShareAlike 3.0 Unported License. 
+# http://creativecommons.org/licenses/by-sa/3.0/
+
+CONKYDIR="$HOME/.config/conky"
+
+conky_default_theme() {
+  ln -sf $CONKYDIR/conky_default $CONKYDIR/conky.conf
+}
+
+conky_gotham_theme() {
+  ln -sf $CONKYDIR/conky_gotham $CONKYDIR/conky.conf
+}
+
+conky_min_theme() {
+  ln -sf $CONKYDIR/conky_min $CONKYDIR/conky.conf
+}
+
+conky_max_theme() {
+  ln -sf $CONKYDIR/conky_max $CONKYDIR/conky.conf
+}
+
+case "$1" in
+
+  default)
+    conky_default_theme
+    conkyrestart ;;
+
+  gotham)
+    conky_gotham_theme
+    conkyrestart ;;
+
+  min)
+    conky_min_theme
+    conkyrestart ;;
+
+  max)
+    conky_max_theme
+    conkyrestart ;;
+    
+esac

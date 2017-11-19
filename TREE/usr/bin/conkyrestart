@@ -1,0 +1,15 @@
+#!/bin/bash
+# 
+# Written for alphaOS: http://sourceforge.net/projects/alphaos
+# Author: archpup@gmail.com
+#
+# Distributed under the Creative Commons Attribution ShareAlike 3.0 Unported License. 
+# http://creativecommons.org/licenses/by-sa/3.0/
+
+if [ "$(ps -C conky -o pid=)" ]; then
+    killall conky && sleep 1s && conky &
+    exit 0
+else
+    conky &
+    exit 0
+fi

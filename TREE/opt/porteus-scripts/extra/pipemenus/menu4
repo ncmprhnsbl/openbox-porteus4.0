@@ -1,0 +1,44 @@
+#!/bin/bash
+cat <<EOFMENU
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_pipe_menu>
+	     <separator label="Porteus 3ox" />
+	     <separator label="`date +%A\ \ %I\:%M\ %p`" />
+	     <separator label="`date +%B\ %d,\ %Y`" />
+	     <separator />
+             <item label="File Manager"> <action name="Execute">
+             <execute>/opt/porteus-scripts/xorg/fmanager</execute> 
+             <startupnotify><enabled>yes</enabled></startupnotify>
+             </action></item>
+             <item label="Terminal"> <action name="Execute">
+             <execute>sakura -c 90 -r 29</execute> 
+             <startupnotify><enabled>yes</enabled></startupnotify>
+             </action></item>
+             <item label="Web Browser"> <action name="Execute">
+             <execute>/opt/porteus-scripts/xorg/browser</execute> 
+             <startupnotify><enabled>yes</enabled></startupnotify>
+             </action></item>
+             <item label="Notes"> <action name="Execute">
+             <execute>spacefm -g --window-icon "accessories-text-editor" --title "Notes" --editor ~/Documents/notes ~/Documents/notes --button close</execute> 
+             <startupnotify><enabled>yes</enabled></startupnotify>
+             </action></item>            
+	     <separator />
+	     <menu id="dbcon" />
+	     <separator />
+	     <menu  id="pipe-places" />
+	     <separator />
+             <menu id="desktop-app-menu"  />
+ 	     <separator />
+	     <menu id="openbox" />
+	     <separator />
+	     <menu id="candypipe" />
+	     <separator />
+	     <item label="Run"> <action name="Execute"> 
+	     <execute>dmenu_run</execute>
+	     </action></item>
+	     <separator />
+	     <item label="Exit"> <action name="Execute"> 
+	     <execute>/opt/porteus-scripts/extra/logoutscript</execute>
+	     </action></item>
+</openbox_pipe_menu>
+EOFMENU
