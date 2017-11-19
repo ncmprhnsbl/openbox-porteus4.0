@@ -1,3 +1,5 @@
+NOTE: this document needs work :p
+
 ## IMPORTANT ##
 Keep the directory structure exactly as it is. The scripts rely on this.
 They will create a 'build' directory and an 'export' directory as needed.
