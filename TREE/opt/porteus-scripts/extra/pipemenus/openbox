@@ -1,6 +1,5 @@
 #!/bin/bash
 cat <<EOFMENU
-<?xml version="1.0" encoding="UTF-8"?>
 <openbox_pipe_menu>
 <item label="Screenshot"> <action name="Execute">                         
 <execute>/opt/porteus-scripts/extra/gtk-scrot</execute>

@@ -16,3 +16,4 @@
 #
 #xfce-mcs-manager &
 #xterm -r
+/opt/porteus-scripts/xorg/gui-autostart

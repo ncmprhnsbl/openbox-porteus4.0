@@ -1,15 +1,17 @@
-##startup file for openbox --- only uncommented lines are executed##
-##start networkmanager tray applet##
+## Startup file for openbox --- only uncommented lines are executed##
+## Start lxpolkit ##
+lxpolkit &
+## Start networkmanager tray applet##
 (sleep 3 && /usr/bin/nm-applet) &
-##set wallpaper with nitrogen##
+## set wallpaper with nitrogen##
 nitrogen --restore &
-##start panel##
+## Start panel##
 tint2 &
-##start conky system info/monitor##
+## Start conky system info/monitor##
 conky -q &
-##add volumeicon to tray##
+## Add volumeicon to tray##
 volumeicon &
-##start compton compositor##
+## Start compton compositor##
 #compton --config ~/.config/compton/compton.conf &
-##set your desired keyboard layout##
+## Set your desired keyboard layout##
 #setxkbmap -layout <your layout> &

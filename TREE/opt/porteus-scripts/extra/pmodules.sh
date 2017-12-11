@@ -1,9 +1,9 @@
-    #! /bin/bash
+#! /bin/bash
 
-    # Check if we are root
+# Check if we are root
     if [ "$UID" -ne 0 ]; then
       if [ "$DISPLAY" ]; then
-        gksu $0
+        /opt/porteus-scripts/xorg/psu $0
       else
         echo "Enter root password"
         su -c $0
@@ -11,11 +11,11 @@
       exit
     fi
 
-    export MODULE_LOAD_DIR="/mnt/live/memory/images"
-    export TMPFILE="/tmp/${$}_port_modules"
-    export LOADEDENTRIES="grep -c gtk-yes $TMPFILE | tr -d '\n'"
-    export NUMENTRIES="wc -l $TMPFILE | cut -f 1 -d ' '"
-    export PORTROOTDIR=`grep -q copy2ram /proc/cmdline && echo "/mnt/live/memory/copy2ram" || grep -A1 "Porteus data found in" /var/log/porteus-livedbg | tail -n1`
+export MODULE_LOAD_DIR="/mnt/live/memory/images"
+export TMPFILE="/tmp/${$}_port_modules"
+export LOADEDENTRIES="grep -c gtk-yes $TMPFILE | tr -d '\n'"
+export NUMENTRIES="wc -l $TMPFILE | cut -f 1 -d ' '"
+export PORTROOTDIR=`grep -q copy2ram /proc/cmdline && echo "/mnt/live/memory/copy2ram" || grep -A1 "Porteus data found in" /var/log/porteus-livedbg | tail -n1`
 
     trap sigint_handler INT
     sigint_handler()
@@ -23,7 +23,7 @@
         rm -f "$TMPFILE"
     }
 
-    # Functions modified from the linuxrc
+# Functions modified from the linuxrc
     function value() { egrep -o " $1=[^ ]+" /proc/cmdline | cut -d= -f2; }
 
     function search()
@@ -38,9 +38,9 @@
      echo $FOUND
     }
 
-    export EXTRAMODS=`value extramod | sed 's/;/ /g'`
+export EXTRAMODS=`value extramod | sed 's/;/ /g'`
 
-    # Load modules activated after booting.
+# Load modules activated after booting.
     function load_remaining_modules
     {
       local PORTMODULES="$(ls $MODULE_LOAD_DIR | sort)"
@@ -55,7 +55,7 @@
       done   
     }
 
-    # Loads modules from porteus base/modules/optional directories and extramod= directories
+# Loads modules from porteus base/modules/optional directories and extramod= directories
     function load_modules
     {
       local PORTMODULES="$(find $PORTROOTDIR -name "*.xzm" | sort)"
@@ -72,7 +72,7 @@
          fi
       done
 
-      # Copy2Ram copies even the extramods to copy2ram directory. No need to check it again
+# Copy2Ram copies even the extramods to copy2ram directory. No need to check it again
       if [ "$EXTRAMODS" -a "$PORTROOTDIR" != "/mnt/live/memory/copy2ram" ]; then
        for EXTRAMOD in $EXTRAMODS; do
         echo $EXTRAMOD | egrep -q '^UUID|^LABEL' && EXTRAMOD="$(echo $EXTRAMOD | cut -d \/ -f2-)"
@@ -100,7 +100,7 @@
       load_remaining_modules
     }
 
-    # Activate or deactivate a modules
+# Activate or deactivate a modules
     function activate_module
     {
       if [ "$1" = "" ]; then return; fi
@@ -116,7 +116,7 @@
      refresh_modules
     }
 
-    # Refresh module list
+# Refresh module list
     function refresh_modules
     {
       rm -f "$TMPFILE"

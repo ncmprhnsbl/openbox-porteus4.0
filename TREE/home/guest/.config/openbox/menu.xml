@@ -1,11 +1,11 @@
-<!-- This menu is only used to source menu ids - current root menu set in rc.xml is- /opt/porteus-scripts/extra/pipemenus/menu4 -->
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- This menu is only used to source menu ids - current root menu set in rc.xml is- /opt/porteus-scripts/extra/pipemenus/menu4 -->
 <openbox_menu>
         <menu id="pipe-places" label="Home.." execute="/opt/porteus-scripts/extra/pipemenus/obpipemenu-places" />
         <menu id="obrecent.sh" label="Recent Files.." execute="/opt/porteus-scripts/extra/pipemenus/obrecent.sh" />
         <menu id="date-menu" label="Calendar" execute="/opt/porteus-scripts/extra/pipemenus/date-menu.sh" />
         <menu id="pipe-wall" label="Wallpapers" execute="/opt/porteus-scripts/extra/pipemenus/obpipemenu-wallpaper" />
-        <menu id="desktop-app-menu" label="Applications" execute="openbox-menu -i lxde-applications.menu" />
+        <menu id="desktop-app-menu" label="Applications" execute="obmenu-generator" />
         <menu id="menu3" label="Apps" execute="/opt/porteus-scripts/extra/menu3" />
         <menu id="menu4" label="Apps" execute="/opt/porteus-scripts/extra/pipemenus/menu4" />
         <menu id="candypipe" label="Eye Candy" execute="/opt/porteus-scripts/extra/pipemenus/candypipe" />

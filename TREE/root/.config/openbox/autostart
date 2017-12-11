@@ -1,14 +1,14 @@
 ##startup file for openbox --- only uncommented lines are executed##
 ##start networkmanager tray applet##
 (sleep 3 && /usr/bin/nm-applet) &
-##set wallpaper with feh##
-#sh ~/.fehbg &
+##set wallpaper with nitrogen##
+nitrogen --restore &
 ##start panel##
 tint2 &
 ##start conky system info/monitor##
 #conky -q &
 ##add volumeicon to tray##
-#volumeicon &
+volumeicon &
 ##start compton compositor##
 #compton --config ~/.config/compton/compton.conf &
 ##set your desired keyboard layout##

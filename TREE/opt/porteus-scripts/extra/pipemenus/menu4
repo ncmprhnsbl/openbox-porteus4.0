@@ -1,6 +1,5 @@
 #!/bin/bash
 cat <<EOFMENU
-<?xml version="1.0" encoding="UTF-8"?>
 <openbox_pipe_menu>
 	     <separator label="Porteus 3ox" />
 	     <separator label="`date +%A\ \ %I\:%M\ %p`" />

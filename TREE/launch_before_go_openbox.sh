@@ -33,12 +33,13 @@ rm -rf var/scrollkeeper/*
 rm -f usr/share/applications/gksu.desktop
 rm -f usr/share/applications/uxterm.desktop
 rm -f usr/share/applications/xhtml2ps.desktop
-rm etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
+#rm etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
 
 ## Create symlinks
 #ln -sf /etc/X11/xinit/xinitrc.openbox etc/X11/xinit/xinitrc
 [ ! -d opt/porteus-scripts/xorg ] && mkdir -p opt/porteus-scripts/xorg
 ln -sf /usr/bin/gksu opt/porteus-scripts/xorg/psu
+ln -sf /opt/porteus-scripts/extra/pmodules.sh usr/bin/pmodules
 ln -sf /usr/bin/spacefm opt/porteus-scripts/xorg/fmanager
 ln -sf /usr/bin/beaver opt/porteus-scripts/xorg/editor
 ln -sf /usr/bin/sakura opt/porteus-scripts/xorg/terminal
@@ -96,7 +97,7 @@ for x in `find openbox-patches -type f`; do patch -p1 < $x; done
 rm -rf openbox-patches
 
 ## Fix some menu items
-sed -i 's/Exec=.*/Exec=gksu gparted/g' usr/share/applications/gparted.desktop
+#sed -i 's/Exec=.*/Exec=gksu gparted/g' usr/share/applications/gparted.desktop
 #sed -i 's/Utility;/Graphics;/g' usr/share/applications/gcolor2.desktop
 
 ## suid slock
@@ -127,8 +128,24 @@ rm -rf usr/share/xsessions/openbox-gnome.desktop
 #rm usr/share/applications/gcr-viewer.desktop
 #rm usr/share/applications/gcr-prompter.desktop
 rm usr/share/applications/compton.desktop
+rm usr/share/applications/qv4l2.desktop
 #rm usr/share/applications/tint2conf.desktop
 rm -rf usr/src/*
+
+## Remove lxsession stuff except lxpolkit
+rm -rf usr/bin/lxclipboard
+rm -rf usr/bin/lxlock
+rm -rf usr/bin/lxsession
+rm -rf usr/bin/lxsession-db
+rm -rf usr/bin/lxsession-default
+rm -rf usr/bin/lxsession-default-apps
+rm -rf usr/bin/lxsession-default-terminal
+rm -rf usr/bin/lxsession-edit
+rm -rf usr/bin/lxsession-logout
+rm -rf usr/bin/lxsession-xdg-autostart
+rm -rf usr/bin/lxsettings-daemon
+rm -rf usr/share/applications/lxsession-default-apps.desktop
+rm -rf usr/share/applications/lxsession-edit.desktop
 
 # Strip icons
 #rm openbox-icon-remove.txt
