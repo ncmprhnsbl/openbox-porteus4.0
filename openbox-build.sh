@@ -41,4 +41,4 @@ cd build
 ./launch_before_go_openbox.sh
 rm launch_before_go_openbox.sh
 cd -
-#dir2xzm build 003-openbox${SUFFIX}.xzm
+#dir2xzm build 003-box-${SUFFIX}-$(date +%Y%m%d).xzm
