@@ -9,7 +9,6 @@ gcolor2
 gksu
 gtk-engines
 gtk-murrine-engine
-gtksourceview
 isomaster
 libgksu
 libgtop
@@ -39,14 +38,14 @@ libsigc++
 libvisual
 libwmf
 libzip
+libunique
+lxsession
 media-player-info
-neon
 network-manager-applet
 openjpeg
 openldap-client
 pangomm
 pavucontrol
-polkit-gnome
 poppler
 poppler-data
 v4l-utils
@@ -83,7 +82,11 @@ lxtask
 menu-cache
 nitrogen
 obconf
-openbox-menu
+obmenu-generator
+perl-data-dump
+perl-file-desktopentry
+perl-gtk2
+perl-linux-desktop-files
 sakura
 tint2
 tolua++
