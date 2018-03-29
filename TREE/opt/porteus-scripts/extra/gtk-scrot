@@ -11,7 +11,7 @@
 export GSCRT="/tmp/.gscrt_$$"
 export PIXMAPS=/usr/share/pixmaps/porteus
 
-export dirloc=`readlink -f ~/Desktop`
+export dirloc=`readlink -f $(xdg-user-dir PICTURES)`
 
 mkdir -p $GSCRT
 

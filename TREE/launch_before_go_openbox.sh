@@ -31,9 +31,10 @@ rm -rf usr/share/help/*
 rm -rf var/lib/scrollkeeper/*
 rm -rf var/scrollkeeper/*
 rm -f usr/share/applications/gksu.desktop
-rm -f usr/share/applications/uxterm.desktop
-rm -f usr/share/applications/xhtml2ps.desktop
+#rm -f usr/share/applications/uxterm.desktop
+#rm -f usr/share/applications/xhtml2ps.desktop
 #rm etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
+rm -f usr/share/applications/gksu-properties.desktop
 
 ## Create symlinks
 #ln -sf /etc/X11/xinit/xinitrc.openbox etc/X11/xinit/xinitrc
@@ -96,6 +97,11 @@ find usr/share/icons -type f|xargs chmod -x 2>/dev/null
 for x in `find openbox-patches -type f`; do patch -p1 < $x; done
 rm -rf openbox-patches
 
+##link icons for modules
+ln -sf /usr/share/icons/hicolor/16x16/mimetypes/cdr.png usr/share/icons/Paper/16x16/mimetypes/application-x-xzm.png 
+ln -sf /usr/share/icons/hicolor/32x32/mimetypes/cdr.png usr/share/icons/Paper/32x32/mimetypes/application-x-xzm.png 
+ln -sf /usr/share/icons/hicolor/48x48/mimetypes/cdr.png usr/share/icons/Paper/48x48/mimetypes/application-x-xzm.png 
+
 ## Fix some menu items
 #sed -i 's/Exec=.*/Exec=gksu gparted/g' usr/share/applications/gparted.desktop
 #sed -i 's/Utility;/Graphics;/g' usr/share/applications/gcolor2.desktop
@@ -120,8 +126,8 @@ rm -rf var/log/scripts/*
 rm -rf var/log/setup/*
 rm -rf var/log/removed*
 rm -rf usr/share/gnome-session/sessions/*
-rm -rf usr/share/xsessions/openbox-kde.desktop
-rm -rf usr/share/xsessions/openbox-gnome.desktop
+#rm -rf usr/share/xsessions/openbox-kde.desktop
+#rm -rf usr/share/xsessions/openbox-gnome.desktop
 #rm etc/xfce/xdg/autostart/xscreensaver.desktop
 #rm usr/lib64/libgcr-ui*
 #rm usr/bin/gcr-viewer
@@ -130,6 +136,8 @@ rm -rf usr/share/xsessions/openbox-gnome.desktop
 rm usr/share/applications/compton.desktop
 rm usr/share/applications/qv4l2.desktop
 #rm usr/share/applications/tint2conf.desktop
+rm usr/share/applications/tint2.desktop
+rm usr/share/applications/transmission-qt.desktop
 rm -rf usr/src/*
 
 ## Remove lxsession stuff except lxpolkit
@@ -146,6 +154,23 @@ rm -rf usr/bin/lxsession-xdg-autostart
 rm -rf usr/bin/lxsettings-daemon
 rm -rf usr/share/applications/lxsession-default-apps.desktop
 rm -rf usr/share/applications/lxsession-edit.desktop
+
+rm -rf usr/share/gtk-engines/*
+rm -rf usr/bin/transmission-cli
+rm -rf usr/bin/transmission-create
+rm -rf usr/bin/transmission-edit
+rm -rf usr/bin/transmission-remote
+rm -rf usr/bin/transmission-show
+rm -rf usr/bin/transmission-daemon
+rm -rf usr/bin/transmission-qt
+
+rm -rf usr/bin/imlib2_bumpmap
+rm -rf usr/bin/imlib2_colorspace
+rm -rf usr/bin/imlib2_conv
+rm -rf usr/bin/imlib2_poly
+rm -rf usr/bin/imlib2_show
+rm -rf usr/bin/imlib2_test
+rm -rf usr/bin/imlib2_view
 
 # Strip icons
 #rm openbox-icon-remove.txt
@@ -192,10 +217,22 @@ echo "moving locales"
 cp -a usr/share/locale/* $exp/togo/locale/
 rm -rf usr/share/locale/*
 
+#Move pkgconfig
+cp -a --parents $LIB/pkgconfig/* $exp/include
+rm -rf $LIB/pkgconfig/*
 
 for x in `ls usr/man | grep -v man`; do
 rm -r usr/man/$x
 done
+
+# Copy ld.so.cache
+#if [ "$SUFFIX" = 64 ]; then
+#	rm etc/ld.so.cache32
+#	mv etc/ld.so.cache64 etc/ld.so.cache
+#else
+#	rm etc/ld.so.cache64
+#	mv etc/ld.so.cache32 etc/ld.so.cache
+#fi
 
 echo "COMPLETE!"
 echo "Size AFTER stripping: `du -sh`"

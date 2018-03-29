@@ -6,9 +6,9 @@
 # Run X11 startup helper:
 pidof watch-xorg >/dev/null && sleep 4 || /opt/porteus-scripts/xorg/watch-xorg 2>/dev/null &
 
-# Start XFCE desktop:
-login=`egrep -o " login=[^ ]+*" /proc/cmdline | cut -d= -f2`
-nologin=`grep -o nologin /proc/cmdline`
+# Start openbox desktop:
+login=`egrep -o " login=[^ ]+*" /etc/bootcmd.cfg | cut -d= -f2`
+nologin=`grep -o nologin /etc/bootcmd.cfg`
 [ "$login" ] && sed -i 's/^.*default_user.*/default_user '$login'/g' /etc/slim.conf
 [ "$nologin" ] && sed -i 's/^auto_login/#auto_login/g' /etc/slim.conf
 /usr/bin/slim
